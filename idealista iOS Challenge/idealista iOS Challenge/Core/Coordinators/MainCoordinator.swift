@@ -21,6 +21,9 @@ class MainCoordinator: Coordinator {
     func start() {
         showSplashScreen()
     }
+}
+
+private extension MainCoordinator {
     
     func showSplashScreen() {
         let viewModel = SplashViewModel(propertyRepository: propertyRepository)
@@ -31,12 +34,11 @@ class MainCoordinator: Coordinator {
             
             switch fetchResult {
                 case .online:
-                    //TODO: Go to property list view
-                    print("Debug: Data fetched online")
+                    showPropertyList()
                 case .offline:
-                    showOfflineAlert(on: viewController) {
-                        //TODO: Go to property list view
-                        print("Debug: Data fetched offline")
+                    showOfflineAlert(on: viewController) { [weak self] in
+                        guard let self else { return }
+                        showPropertyList()
                     }
                 case .error(let error):
                     showErrorAlert(error: error, on: viewController)
@@ -45,9 +47,23 @@ class MainCoordinator: Coordinator {
         
         navigationController.setViewControllers([viewController], animated: false)
     }
-}
-
-private extension MainCoordinator {
+    
+    func showPropertyList() {
+        let viewModel = PropertyListViewModel(propertyRepository: propertyRepository)
+        let viewController = PropertyListViewController(viewModel: viewModel)
+        
+        viewModel.onPropertySelected = { [weak self] property in
+            //TODO: Go to detail view
+        }
+        
+        UIView.transition(with: navigationController.view,
+                          duration: 0.5,
+                          options: .transitionCrossDissolve,
+                          animations: { [weak self] in
+            guard let self else { return }
+            navigationController.setViewControllers([viewController], animated: false)
+        }, completion: nil)
+    }
     
     func showOfflineAlert(on viewController: UIViewController, completion: @escaping () -> Void) {
         AlertHelper.showOfflineAlert(on: viewController, completion: completion)

@@ -10,3 +10,5 @@
 "alert_warning" = "Aviso";
 "alert_error_message" = "Error crítico. Reinicia la app.";
 "alert_offline_message" = "La app no ha podido conectarse al servicio y la información se cargará sin conexión";
+
+"property_list_title" = "Propiedades";
