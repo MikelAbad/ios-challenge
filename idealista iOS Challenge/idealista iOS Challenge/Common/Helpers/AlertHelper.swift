@@ -17,7 +17,7 @@ class AlertHelper {
                                                 message: message,
                                                 preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+        let okAction = UIAlertAction(title: "alert_ok".localized(), style: .default) { _ in
             completion?()
         }
         alertController.addAction(okAction)
@@ -27,8 +27,8 @@ class AlertHelper {
     
     static func showOfflineAlert(on viewController: UIViewController,
                                  completion: @escaping () -> Void) {
-        let title = "Warning"
-        let message = "App couldn't connect to the service and data will be loaded offline"
+        let title = "alert_warning".localized()
+        let message = "alert_offline_message".localized()
         
         showAlert(title: title,
                   message: message,
@@ -37,8 +37,8 @@ class AlertHelper {
     }
     
     static func showCriticalErrorAlert(on viewController: UIViewController) {
-        let title = "Error"
-        let message = "Critical error. Restart the app"
+        let title = "alert_error".localized()
+        let message = "alert_error_message".localized()
         
         let alertController = UIAlertController(title: title,
                                                 message: message,

@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  idealista iOS Challenge
+
+  Created by Mikel Abad on 30/04/2025.
+*/
+
+"alert_ok" = "OK";
+"alert_error" = "Error";
+"alert_warning" = "Aviso";
+"alert_error_message" = "Error crítico. Reinicia la app.";
+"alert_offline_message" = "La app no ha podido conectarse al servicio y la información se cargará sin conexión";
