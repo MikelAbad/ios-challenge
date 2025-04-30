@@ -13,7 +13,7 @@ class SplashViewModel {
     
     var isLoading = true
     var error: Error?
-    var onLoadingCompleted: (() -> Void)?
+    var onLoadingCompleted: ((DataLoadingResult) -> Void)?
     
     init(propertyRepository: PropertyRepository) {
         self.propertyRepository = propertyRepository
@@ -22,15 +22,13 @@ class SplashViewModel {
     func loadData() async {
         isLoading = true
         
-        do {
-            try await propertyRepository.fetchProperties()
-            
-            isLoading = false
-            onLoadingCompleted?()
-        } catch {
-            self.error = error
-            isLoading = false
-            onLoadingCompleted?()
-        }
+        let fetchResult = try? await propertyRepository.fetchProperties()
+        
+        isLoading = false
+        
+        let result = fetchResult ?? .error(NSError(domain: "SplashViewModel",
+                                                   code: 777,
+                                                   userInfo: [NSLocalizedDescriptionKey: "Unknown error"]))
+        onLoadingCompleted?(result)
     }
 }

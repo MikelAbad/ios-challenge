@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum DataLoadingResult {
+    case online
+    case offline
+    case error(Error)
+}
+
 @MainActor
 class PropertyRepository {
     private let networkService: NetworkService
@@ -16,7 +22,7 @@ class PropertyRepository {
         self.networkService = networkService
     }
     
-    func fetchProperties() async throws {
+    func fetchProperties() async throws -> DataLoadingResult {
         do {
             NetworkLogger.log(message: "Fetching properties from the API...")
             
@@ -24,10 +30,18 @@ class PropertyRepository {
             self.properties = properties
             
             NetworkLogger.log(message: "Successfully loaded \(properties.count) properties", type: .success)
+            
+            return .online
         } catch {
             NetworkLogger.log(message: "Network fetch failed", type: .error)
             NetworkLogger.log(message: "Falling back to offline testing data")
-            try await loadLocalProperties()
+            
+            do {
+                try await loadLocalProperties()
+                return .offline
+            } catch let localError {
+                return .error(localError)
+            }
         }
     }
     
@@ -46,15 +60,11 @@ private extension PropertyRepository {
                           userInfo: [NSLocalizedDescriptionKey: "JSON not found"])
         }
         
-        do {
-            let data = try Data(contentsOf: url)
-            let properties = try JSONDecoder().decode([Property].self, from: data)
-            self.properties = properties
-            
-            NetworkLogger.log(message: "Successfully loaded \(properties.count) properties from local JSON", type: .success)
-        } catch {
-            throw error
-        }
+        let data = try Data(contentsOf: url)
+        let properties = try JSONDecoder().decode([Property].self, from: data)
+        self.properties = properties
+        
+        NetworkLogger.log(message: "Successfully loaded \(properties.count) properties from local JSON", type: .success)
     }
     
 }
