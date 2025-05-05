@@ -14,13 +14,17 @@ struct PropertyCellView: View {
         VStack(alignment: .leading, spacing: 5) {
             Text("\(Int(property.price))€")
                 .font(.headline)
-                .foregroundColor(.primary)
+                .foregroundColor(.primaryTextColor)
             
             let shortDescription = "\(String(property.description.prefix(100))) ..."
             Text(shortDescription)
                 .font(.caption)
+                .foregroundColor(.secondaryTextColor)
         }
         .padding(.vertical, 12)
-        .background(Color(UIColor.systemBackground))
+        .padding(.horizontal, 12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.cellBackgroundColor)
+        .cornerRadius(12)
     }
 }

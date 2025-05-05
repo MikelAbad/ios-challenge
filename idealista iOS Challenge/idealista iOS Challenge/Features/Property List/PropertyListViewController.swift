@@ -24,6 +24,7 @@ class PropertyListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupUI()
         configureTableView()
         updateUI()
@@ -38,7 +39,7 @@ extension PropertyListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PropertyCell", for: indexPath)
         cell.selectionStyle = .none
-        
+        cell.backgroundColor = .clear
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
         
         let property = viewModel.properties[indexPath.row]
@@ -48,7 +49,7 @@ extension PropertyListViewController: UITableViewDelegate, UITableViewDataSource
         cell.contentView.addSubview(hostingController.view)
         
         NSLayoutConstraint.activate([
-            hostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
+            hostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 10),
             hostingController.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor),
             hostingController.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
             hostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor)
@@ -81,7 +82,7 @@ private extension PropertyListViewController {
         propertyListTableView.delegate = self
         propertyListTableView.dataSource = self
         propertyListTableView.separatorStyle = .none
-        propertyListTableView.backgroundColor = .systemBackground
+        propertyListTableView.backgroundColor = .backgroundColor
         
         propertyListTableView.estimatedRowHeight = 100
         propertyListTableView.rowHeight = UITableView.automaticDimension
@@ -93,7 +94,7 @@ private extension PropertyListViewController {
         )
         
         let hostingController = UIHostingController(rootView: propertyView)
-        hostingController.view.backgroundColor = .clear
+        hostingController.view.backgroundColor = .backgroundColor
         
         return hostingController
     }
