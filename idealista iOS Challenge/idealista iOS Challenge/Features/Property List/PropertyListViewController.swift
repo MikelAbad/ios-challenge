@@ -76,6 +76,11 @@ private extension PropertyListViewController {
         propertyListTableView.reloadData()
     }
     
+    func updateCell(at index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        propertyListTableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
     func configureTableView() {
         propertyListTableView.register(UITableViewCell.self, forCellReuseIdentifier: "PropertyCell")
         
@@ -90,7 +95,12 @@ private extension PropertyListViewController {
     
     func createPropertyCellController(for property: Property, at index: Int) -> UIViewController {
         let propertyView = PropertyCellView(
-            property: property
+            property: property,
+            onFavoriteToggle: { [weak self] in
+                guard let self else { return }
+                viewModel.toggleFavorite(at: index)
+                updateCell(at: index)
+            }
         )
         
         let hostingController = UIHostingController(rootView: propertyView)

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 enum DataLoadingResult {
     case online
@@ -16,10 +17,17 @@ enum DataLoadingResult {
 @MainActor
 class PropertyRepository {
     private let networkService: NetworkService
+    private let propertyStorage: PropertyStorage?
     private var properties: [Property] = []
     
-    init(networkService: NetworkService) {
+    init(networkService: NetworkService, coreDataStack: NSPersistentContainer?) {
         self.networkService = networkService
+        
+        if let coreDataStack {
+            self.propertyStorage = PropertyStorage(coreDataStack: coreDataStack)
+        } else {
+            self.propertyStorage = nil
+        }
     }
     
     func fetchProperties() async throws -> DataLoadingResult {
@@ -28,6 +36,8 @@ class PropertyRepository {
             
             let properties: [Property] = try await networkService.fetchData(from: APIEndpoint.propertyList)
             self.properties = properties
+            
+            updateFavoritesStatus()
             
             NetworkLogger.log(message: "Successfully loaded \(properties.count) properties", type: .success)
             
@@ -49,6 +59,26 @@ class PropertyRepository {
         properties
     }
     
+    func toggleFavorite(propertyCode: String) {
+        guard let propertyStorage,
+              let index = properties.firstIndex(where: { $0.propertyCode == propertyCode }) else {
+            return
+        }
+        
+        let isFavorite = propertyStorage.isFavoriteProperty(propertyCode: propertyCode)
+        
+        if isFavorite {
+            propertyStorage.removeFavoriteProperty(propertyCode: propertyCode)
+            properties[index].isFavorite = false
+            properties[index].favoriteDate = nil
+        } else {
+            let currentDate = Date()
+            propertyStorage.saveFavoriteProperty(propertyCode: propertyCode, date: currentDate)
+            properties[index].isFavorite = true
+            properties[index].favoriteDate = currentDate
+        }
+    }
+    
 }
 
 private extension PropertyRepository {
@@ -64,7 +94,27 @@ private extension PropertyRepository {
         let properties = try JSONDecoder().decode([Property].self, from: data)
         self.properties = properties
         
+        updateFavoritesStatus()
+        
         NetworkLogger.log(message: "Successfully loaded \(properties.count) properties from local JSON", type: .success)
+    }
+    
+    func updateFavoritesStatus() {
+        guard let propertyStorage else { return }
+        
+        let favorites = propertyStorage.getAllFavoriteProperties()
+        
+        for i in 0..<properties.count {
+            let propertyCode = properties[i].propertyCode
+            
+            if let favoriteInfo = favorites.first(where: { $0.propertyCode == propertyCode }) {
+                properties[i].isFavorite = true
+                properties[i].favoriteDate = favoriteInfo.favoriteDate
+            } else {
+                properties[i].isFavorite = false
+                properties[i].favoriteDate = nil
+            }
+        }
     }
     
 }

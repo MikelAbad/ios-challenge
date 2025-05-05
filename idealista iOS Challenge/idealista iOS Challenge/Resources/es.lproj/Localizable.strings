@@ -12,3 +12,7 @@
 "alert_offline_message" = "La app no ha podido conectarse al servicio y la información se cargará sin conexión";
 
 "property_list_title" = "Propiedades";
+
+"date_today" = "Hoy";
+"date_yesterday" = "Ayer";
+"date_days_ago" = "Hace %d días";

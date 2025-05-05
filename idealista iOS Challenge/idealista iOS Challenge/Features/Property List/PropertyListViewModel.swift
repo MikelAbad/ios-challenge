@@ -23,4 +23,13 @@ class PropertyListViewModel {
         guard index < properties.count else { return }
         onPropertySelected?(properties[index])
     }
+    
+    func toggleFavorite(at index: Int) {
+        guard index < properties.count else { return }
+        
+        let propertyCode = properties[index].propertyCode
+        propertyRepository.toggleFavorite(propertyCode: propertyCode)
+        
+        properties = propertyRepository.getProperties()
+    }
 }

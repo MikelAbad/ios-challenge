@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import CoreData
 
 @MainActor
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     private let networkService = NetworkService()
-    private lazy var propertyRepository = PropertyRepository(networkService: networkService)
+    private lazy var coreDataStack: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    private lazy var propertyRepository = PropertyRepository(networkService: networkService, coreDataStack: coreDataStack)
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController

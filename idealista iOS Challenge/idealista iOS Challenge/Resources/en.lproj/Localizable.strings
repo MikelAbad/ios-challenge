@@ -12,3 +12,7 @@
 "alert_offline_message" = "App couldn't connect to the service and data will be loaded offline";
 
 "property_list_title" = "Properties";
+
+"date_today" = "Today";
+"date_yesterday" = "Yesterday";
+"date_days_ago" = "%d days ago";

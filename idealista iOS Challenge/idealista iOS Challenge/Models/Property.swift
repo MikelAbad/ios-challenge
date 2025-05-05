@@ -31,6 +31,17 @@ struct Property: Decodable {
     let multimedia: Multimedia
     let features: Features
     let parkingSpace: ParkingSpace?
+    
+    var isFavorite: Bool = false
+    var favoriteDate: Date?
+    
+    enum CodingKeys: String, CodingKey {
+        case propertyCode, thumbnail, floor, price, priceInfo
+        case propertyType, operation, size, exterior, rooms, bathrooms
+        case address, province, municipality, district, country
+        case neighborhood, latitude, longitude, description
+        case multimedia, features, parkingSpace
+    }
 }
 
 struct PriceInfo: Decodable {
