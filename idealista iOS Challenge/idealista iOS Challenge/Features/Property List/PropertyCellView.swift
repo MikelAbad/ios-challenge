@@ -27,7 +27,7 @@ struct PropertyCellView: View {
                     Button(action: onFavoriteToggle) {
                         Image(systemName: property.isFavorite ? "heart.fill" : "heart")
                             .font(.subheadline)
-                            .foregroundColor(property.isFavorite ? .favoriteColor : .secondaryTextColor)
+                            .foregroundColor(property.isFavorite ? .primaryColor : .secondaryColor)
                     }
                     
                     if property.isFavorite,

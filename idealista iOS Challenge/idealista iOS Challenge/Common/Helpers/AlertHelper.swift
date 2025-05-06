@@ -24,8 +24,8 @@ class AlertHelper {
     
     static func showOfflineAlert(on viewController: UIViewController,
                                  completion: @escaping () -> Void) {
-        let title = "alert_warning".localized()
-        let message = "alert_offline_message".localized()
+        let title = "alert.warning".localized()
+        let message = "alert.offline.message".localized()
         
         showAlert(title: title,
                   message: message,
@@ -34,8 +34,8 @@ class AlertHelper {
     }
     
     static func showCriticalErrorAlert(on viewController: UIViewController) {
-        let title = "alert_error".localized()
-        let message = "alert_error_message".localized()
+        let title = "alert.error".localized()
+        let message = "alert.error.message".localized()
         
         let alertController = UIAlertController(title: title,
                                                 message: message,
@@ -76,7 +76,7 @@ private extension AlertHelper {
     }
     
     static func addOkAction(to alertController: UIAlertController, completion: (() -> Void)?) {
-        let okAction = UIAlertAction(title: "alert_ok".localized(), style: .default) { _ in
+        let okAction = UIAlertAction(title: "alert.ok".localized(), style: .default) { _ in
             completion?()
         }
         okAction.setValue(UIColor.accentColor, forKey: "titleTextColor")

@@ -11,16 +11,16 @@ extension Date {
     
     func relativeFormat() -> String {
         if Calendar.current.isDateInToday(self) {
-            return "date_today".localized()
+            return "date.today".localized()
         }
         
         if Calendar.current.isDateInYesterday(self) {
-            return "date_yesterday".localized()
+            return "date.yesterday".localized()
         }
         
         let days = Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
         if days > 0 && days < 10  {
-            return String(format: "date_days_ago".localized(), days)
+            return String(format: "date.daysAgo".localized(), days)
         }
         
         return shortFormat()

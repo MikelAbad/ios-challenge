@@ -28,7 +28,7 @@ private extension AppearanceHelper {
         
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().tintColor = UIColor.accentColor
+        UINavigationBar.appearance().tintColor = .accentColor
     }
     
 }

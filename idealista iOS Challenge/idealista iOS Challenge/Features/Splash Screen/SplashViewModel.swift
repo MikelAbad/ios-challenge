@@ -11,8 +11,6 @@ import Foundation
 class SplashViewModel {
     private let propertyRepository: PropertyRepository
     
-    var isLoading = true
-    var error: Error?
     var onLoadingCompleted: ((DataLoadingResult) -> Void)?
     
     init(propertyRepository: PropertyRepository) {
@@ -20,12 +18,7 @@ class SplashViewModel {
     }
     
     func loadData() async {
-        isLoading = true
-        
         let fetchResult = try? await propertyRepository.fetchProperties()
-        
-        isLoading = false
-        
         let result = fetchResult ?? .error(NSError(domain: "SplashViewModel",
                                                    code: 777,
                                                    userInfo: [NSLocalizedDescriptionKey: "Unknown error"]))

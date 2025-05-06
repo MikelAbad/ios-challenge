@@ -5,14 +5,17 @@
   Created by Mikel Abad on 30/04/2025.
 */
 
-"alert_ok" = "OK";
-"alert_error" = "Error";
-"alert_warning" = "Aviso";
-"alert_error_message" = "Error crítico. Reinicia la app.";
-"alert_offline_message" = "La app no ha podido conectarse al servicio y la información se cargará sin conexión";
+"alert.ok" = "OK";
+"alert.error" = "Error";
+"alert.warning" = "Aviso";
+"alert.error.message" = "Error crítico. Reinicia la app.";
+"alert.offline.message" = "La app no ha podido conectarse al servicio y la información se cargará sin conexión";
 
-"property_list_title" = "Propiedades";
+"propertyList.title" = "Propiedades";
 
-"date_today" = "Hoy";
-"date_yesterday" = "Ayer";
-"date_days_ago" = "Hace %d días";
+"propertyDetail.showMore" = "Ver más";
+"propertyDetail.showLess" = "Ver menos";
+
+"date.today" = "Hoy";
+"date.yesterday" = "Ayer";
+"date.daysAgo" = "Hace %d días";

@@ -38,10 +38,6 @@ extension UIColor {
         UIColor(named: "navigationColor") ?? UIColor(red: 46/255, green: 139/255, blue: 87/255, alpha: 1) // #D68910
     }
     
-    static var favoriteColor: UIColor {
-        UIColor(named: "favoriteColor") ?? UIColor(red: 214/255, green: 137/255, blue: 16/255, alpha: 1) // #D68910
-    }
-    
 }
 
 extension Color {
@@ -54,7 +50,6 @@ extension Color {
     static let primaryTextColor = Color("primaryTextColor")
     static let secondaryTextColor = Color("secondaryTextColor")
     
-    static let favoriteColor = Color("favoriteColor")
     static let navigationColor = Color("navigationColor")
     static let cellBackgroundColor = Color("cellBackgroundColor")
     

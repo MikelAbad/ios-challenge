@@ -15,6 +15,7 @@ class MainCoordinator: Coordinator {
     private let networkService = NetworkService()
     private lazy var coreDataStack: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     private lazy var propertyRepository = PropertyRepository(networkService: networkService, coreDataStack: coreDataStack)
+    private lazy var propertyDetailsRepository = PropertyDetailsRepository(networkService: networkService)
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -55,7 +56,8 @@ private extension MainCoordinator {
         let viewController = PropertyListViewController(viewModel: viewModel)
         
         viewModel.onPropertySelected = { [weak self] property in
-            //TODO: Go to detail view
+            guard let self else { return }
+            showPropertyDetail(property: property)
         }
         
         UIView.transition(with: navigationController.view,
@@ -65,6 +67,13 @@ private extension MainCoordinator {
             guard let self else { return }
             navigationController.setViewControllers([viewController], animated: false)
         }, completion: nil)
+    }
+    
+    func showPropertyDetail(property: Property) {
+        let viewModel = PropertyDetailViewModel(property: property, repository: propertyDetailsRepository)
+        let viewController = PropertyDetailViewController(viewModel: viewModel)
+        
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func showOfflineAlert(on viewController: UIViewController, completion: @escaping () -> Void) {

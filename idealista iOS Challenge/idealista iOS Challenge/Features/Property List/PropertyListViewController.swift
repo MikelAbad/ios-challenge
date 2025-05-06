@@ -69,7 +69,7 @@ extension PropertyListViewController: UITableViewDelegate, UITableViewDataSource
 private extension PropertyListViewController {
     
     func setupUI() {
-        title = "property_list_title".localized()
+        title = "propertyList.title".localized()
     }
     
     func updateUI() {
