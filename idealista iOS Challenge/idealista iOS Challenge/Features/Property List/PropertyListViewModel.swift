@@ -32,4 +32,12 @@ class PropertyListViewModel {
         
         properties = propertyRepository.getProperties()
     }
+    
+    func refreshProperties() async {
+        do {
+            properties = try await propertyRepository.refreshProperties()
+        } catch {
+            NetworkLogger.log(message: "Error refreshing properties", type: .error)
+        }
+    }
 }

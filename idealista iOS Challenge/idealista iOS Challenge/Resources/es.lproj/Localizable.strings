@@ -12,6 +12,7 @@
 "alert.offline.message" = "La app no ha podido conectarse al servicio y la información se cargará sin conexión";
 
 "propertyList.title" = "Propiedades";
+"propertyList.pullToRefresh" = "Desliza para actualizar";
 
 "propertyDetail.showMore" = "Ver más";
 "propertyDetail.showLess" = "Ver menos";

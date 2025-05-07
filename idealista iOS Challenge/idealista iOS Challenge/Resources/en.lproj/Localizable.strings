@@ -12,6 +12,7 @@
 "alert.offline.message" = "App couldn't connect to the service and data will be loaded offline";
 
 "propertyList.title" = "Properties";
+"propertyList.pullToRefresh" = "Pull to refresh";
 
 "propertyDetail.showMore" = "See more";
 "propertyDetail.showLess" = "See less";

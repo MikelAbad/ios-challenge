@@ -13,6 +13,8 @@ class PropertyListViewController: UIViewController {
     
     @IBOutlet weak var propertyListTableView: UITableView!
     
+    private let refreshControl = UIRefreshControl()
+    
     init(viewModel: PropertyListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: "PropertyListViewController", bundle: nil)
@@ -27,6 +29,7 @@ class PropertyListViewController: UIViewController {
         
         setupUI()
         configureTableView()
+        setupRefreshControl()
         updateUI()
     }
 }
@@ -107,6 +110,28 @@ private extension PropertyListViewController {
         hostingController.view.backgroundColor = .backgroundColor
         
         return hostingController
+    }
+    
+    func setupRefreshControl() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.primaryTextColor,
+            .font: UIFont.preferredFont(forTextStyle: .subheadline)
+        ]
+        refreshControl.attributedTitle = NSAttributedString(
+            string: "propertyList.pullToRefresh".localized(),
+            attributes: attributes
+        )
+        refreshControl.tintColor = .primaryColor
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        propertyListTableView.refreshControl = refreshControl
+    }
+    
+    @objc func refreshData() {
+        Task {
+            await viewModel.refreshProperties()
+            updateUI()
+            refreshControl.endRefreshing()
+        }
     }
     
 }
