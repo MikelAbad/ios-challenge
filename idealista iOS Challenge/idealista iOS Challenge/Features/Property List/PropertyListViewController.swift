@@ -55,7 +55,7 @@ extension PropertyListViewController: UITableViewDelegate, UITableViewDataSource
             hostingController.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 10),
             hostingController.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor),
             hostingController.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
-            hostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor)
+            hostingController.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -10)
         ])
         
         addChild(hostingController)
@@ -97,7 +97,7 @@ private extension PropertyListViewController {
     }
     
     func createPropertyCellController(for property: Property, at index: Int) -> UIViewController {
-        let propertyView = PropertyCellView(
+        let cellViewModel = PropertyCellViewModel(
             property: property,
             onFavoriteToggle: { [weak self] in
                 guard let self else { return }
@@ -105,6 +105,8 @@ private extension PropertyListViewController {
                 updateCell(at: index)
             }
         )
+        
+        let propertyView = PropertyCellView(viewModel: cellViewModel)
         
         let hostingController = UIHostingController(rootView: propertyView)
         hostingController.view.backgroundColor = .backgroundColor

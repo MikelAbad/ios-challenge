@@ -13,6 +13,16 @@
 
 "propertyList.title" = "Properties";
 "propertyList.pullToRefresh" = "Pull to refresh";
+"propertyList.flat" = "Flat";
+"propertyList.house" = "House";
+"propertyList.studio" = "Studio";
+"propertyList.property" = "Property";
+"propertyList.propertyIn" = "%@ in %@";
+"propertyList.description" = "Floor %@ %@";
+"propertyList.exterior" = "exterior";
+"propertyList.interior" = "interior";
+"propertyList.hasParkingSpace" = "With parking space";
+"propertyList.parkingSpaceIncluded" = "Parking space included";
 
 "propertyDetail.showMore" = "See more";
 "propertyDetail.showLess" = "See less";

@@ -35,7 +35,8 @@ class PropertyListViewModel {
     
     func refreshProperties() async {
         do {
-            properties = try await propertyRepository.refreshProperties()
+            try await propertyRepository.refreshProperties()
+            properties = propertyRepository.getProperties()
         } catch {
             NetworkLogger.log(message: "Error refreshing properties", type: .error)
         }

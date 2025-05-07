@@ -55,13 +55,13 @@ class PropertyRepository {
         }
     }
     
-    func refreshProperties() async throws -> [Property] {
+    func refreshProperties() async throws {
         let properties: [Property] = try await networkService.fetchData(from: APIEndpoint.propertyList)
         self.properties = properties
         
         updateFavoritesStatus()
         
-        return self.properties
+        NetworkLogger.log(message: "Successfully refreshed \(properties.count) properties", type: .success)
     }
     
     func getProperties() -> [Property] {
