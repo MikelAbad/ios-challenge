@@ -26,6 +26,28 @@
 
 "propertyDetail.showMore" = "Ver más";
 "propertyDetail.showLess" = "Ver menos";
+"propertyDetail.propertyIn" = "%@ en %@";
+"propertyDetail.address" = "%@ - %@, %@";
+"propertyDetail.hasParkingSpace" = "Con plaza de garaje";
+"propertyDetail.parkingSpaceIncluded" = "Plaza de garaje incluida en el precio";
+"propertyDetail.description" = "Planta %@ª %@";
+"propertyDetail.exterior" = "exterior";
+"propertyDetail.interior" = "interior";
+"propertyDetail.comment" = "Comentario del anunciante";
+"propertyDetail.basicFeatures" = "Características básicas";
+"propertyDetail.buildingFeatures" = "Edificio";
+"propertyDetail.notAvailable" = "No disponible";
+"propertyDetail.hasElevator" = "Con ascensor";
+"propertyDetail.noElevator" = "Sin ascensor";
+"propertyDetail.rooms" = "habitaciones";
+"propertyDetail.bathrooms" = "baños";
+"propertyDetail.boxroom" = "Trastero";
+"propertyDetail.airConditioning" = "Aire acondicionado";
+"propertyDetail.energyCertificate" = "Certificado energético";
+"propertyDetail.energyConsumption" = "Consumo";
+"propertyDetail.energyEmission" = "Emisiones";
+"propertyDetail.community" = "Costes de comunidad";
+"propertyDetail.monthCost" = "€/mes";
 
 "date.today" = "Hoy";
 "date.yesterday" = "Ayer";

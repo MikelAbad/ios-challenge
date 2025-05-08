@@ -51,7 +51,7 @@ class PropertyCellViewModel: ObservableObject {
         let propertyType = PropertyType(from: property.propertyType)
         return String(format: "propertyList.propertyIn".localized(),
                       propertyType.name,
-                      property.district)
+                      property.address.localizedCapitalized)
     }
     
     var price: String {

@@ -26,6 +26,28 @@
 
 "propertyDetail.showMore" = "See more";
 "propertyDetail.showLess" = "See less";
+"propertyDetail.propertyIn" = "%@ in %@";
+"propertyDetail.address" = "%@ - %@, %@";
+"propertyDetail.hasParkingSpace" = "With parking space";
+"propertyDetail.parkingSpaceIncluded" = "Parking space included in the price";
+"propertyDetail.description" = "Floor %@ %@";
+"propertyDetail.exterior" = "exterior";
+"propertyDetail.interior" = "interior";
+"propertyDetail.comment" = "Listing comment";
+"propertyDetail.basicFeatures" = "Basic features";
+"propertyDetail.buildingFeatures" = "Building";
+"propertyDetail.notAvailable" = "Not available";
+"propertyDetail.hasElevator" = "Has elevator";
+"propertyDetail.noElevator" = "No elevator";
+"propertyDetail.rooms" = "rooms";
+"propertyDetail.bathrooms" = "bathrooms";
+"propertyDetail.boxroom" = "Boxroom";
+"propertyDetail.airConditioning" = "Air conditioning";
+"propertyDetail.energyCertificate" = "Energy certification";
+"propertyDetail.energyConsumption" = "Consumption";
+"propertyDetail.energyEmission" = "Emissions";
+"propertyDetail.community" = "Community cost";
+"propertyDetail.monthCost" = "€/month";
 
 "date.today" = "Today";
 "date.yesterday" = "Yesterday";
