@@ -9,9 +9,13 @@ import SwiftUI
 import MapKit
 
 struct PropertyCellView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @ObservedObject var viewModel: PropertyCellViewModel
     
-    private let imageHeight: CGFloat = 200
+    var baseImageHeight: CGFloat = 200
+    var imageHeight: CGFloat {
+        horizontalSizeClass == .regular ? baseImageHeight * 2 : baseImageHeight
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {

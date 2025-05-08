@@ -12,13 +12,15 @@ import CoreData
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
     
-    private let networkService = NetworkService()
-    private lazy var coreDataStack: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
-    private lazy var propertyRepository = PropertyRepository(networkService: networkService, coreDataStack: coreDataStack)
-    private lazy var propertyDetailsRepository = PropertyDetailsRepository(networkService: networkService)
+    private let repositoryProvider: RepositoryProvider
+    private let alertService: AlertService
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController,
+         repositoryProvider: RepositoryProvider,
+         alertService: AlertService) {
         self.navigationController = navigationController
+        self.repositoryProvider = repositoryProvider
+        self.alertService = alertService
     }
     
     func start() {
@@ -29,7 +31,7 @@ class MainCoordinator: Coordinator {
 private extension MainCoordinator {
     
     func showSplashScreen() {
-        let viewModel = SplashViewModel(propertyRepository: propertyRepository)
+        let viewModel = SplashViewModel(propertyRepository: repositoryProvider.getPropertyRepository())
         let viewController = SplashViewController(viewModel: viewModel)
         
         viewModel.onLoadingCompleted = { [weak self] fetchResult in
@@ -39,12 +41,12 @@ private extension MainCoordinator {
                 case .online:
                     showPropertyList()
                 case .offline:
-                    showOfflineAlert(on: viewController) { [weak self] in
+                    alertService.showOfflineAlert(on: viewController) { [weak self] in
                         guard let self else { return }
                         showPropertyList()
                     }
                 case .error(let error):
-                    showErrorAlert(error: error, on: viewController)
+                    alertService.showErrorAlert(error: error, on: viewController)
             }
         }
         
@@ -52,7 +54,7 @@ private extension MainCoordinator {
     }
     
     func showPropertyList() {
-        let viewModel = PropertyListViewModel(propertyRepository: propertyRepository)
+        let viewModel = PropertyListViewModel(propertyRepository: repositoryProvider.getPropertyRepository())
         let viewController = PropertyListViewController(viewModel: viewModel)
         
         viewModel.onPropertySelected = { [weak self] property in
@@ -70,18 +72,10 @@ private extension MainCoordinator {
     }
     
     func showPropertyDetail(property: Property) {
-        let viewModel = PropertyDetailViewModel(property: property, repository: propertyDetailsRepository)
+        let viewModel = PropertyDetailViewModel(property: property, repository: repositoryProvider.getPropertyDetailsRepository())
         let viewController = PropertyDetailViewController(viewModel: viewModel)
         
         navigationController.pushViewController(viewController, animated: true)
-    }
-    
-    func showOfflineAlert(on viewController: UIViewController, completion: @escaping () -> Void) {
-        AlertHelper.showOfflineAlert(on: viewController, completion: completion)
-    }
-    
-    func showErrorAlert(error: Error, on viewController: UIViewController) {
-        AlertHelper.showCriticalErrorAlert(on: viewController)
     }
     
 }

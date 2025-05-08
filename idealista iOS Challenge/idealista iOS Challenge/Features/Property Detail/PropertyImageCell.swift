@@ -22,8 +22,15 @@ class PropertyImageCell: UICollectionViewCell {
     }
     
     func configure(with imageURL: URL?) {
+        imageView.image = UIImage(systemName: "photo")
+        
         guard let imageURL else {
             imageView.image = UIImage(systemName: "photo.badge.exclamationmark")
+            return
+        }
+        
+        if let cachedImage = ImageCache.shared.image(for: imageURL) {
+            imageView.image = cachedImage
             return
         }
         
@@ -31,6 +38,8 @@ class PropertyImageCell: UICollectionViewCell {
             do {
                 let (data, _) = try await URLSession.shared.data(from: imageURL)
                 if let image = UIImage(data: data) {
+                    ImageCache.shared.saveImage(image, for: imageURL)
+                    
                     await MainActor.run { [weak self] in
                         guard let self else { return }
                         imageView.image = image

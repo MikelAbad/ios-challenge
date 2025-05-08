@@ -72,6 +72,12 @@ class PropertyDetailViewController: UIViewController {
     private let pageIndicatorLabel = UILabel()
     private var currentPage = 0
     
+    private let baseHeight: CGFloat = 200
+    private let iPadMultiplier: CGFloat = 2
+    private var mapHeight: CGFloat {
+        UIDevice.current.userInterfaceIdiom == .pad ? baseHeight * iPadMultiplier : baseHeight
+    }
+    
     init(viewModel: PropertyDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -482,7 +488,7 @@ private extension PropertyDetailViewController {
             mapView.topAnchor.constraint(equalTo: mapTitleLabel.bottomAnchor, constant: 12),
             mapView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             mapView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            mapView.heightAnchor.constraint(equalToConstant: 200),
+            mapView.heightAnchor.constraint(equalToConstant: mapHeight),
             mapView.bottomAnchor.constraint(equalTo: mapContainer.bottomAnchor)
         ])
     }

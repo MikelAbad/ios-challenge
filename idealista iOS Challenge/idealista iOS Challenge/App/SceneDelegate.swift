@@ -21,8 +21,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         
         let navigationController = UINavigationController()
+        let networkService = NetworkService()
+        let alertService = AlertService()
+        let coreDataStack = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+        let repositoryProvider = RepositoryProvider(networkService: networkService, coreDataStack: coreDataStack)
         
-        mainCoordinator = MainCoordinator(navigationController: navigationController)
+        
+        mainCoordinator = MainCoordinator(
+            navigationController: navigationController,
+            repositoryProvider: repositoryProvider,
+            alertService: alertService
+        )
         mainCoordinator?.start()
         
         window.rootViewController = navigationController
