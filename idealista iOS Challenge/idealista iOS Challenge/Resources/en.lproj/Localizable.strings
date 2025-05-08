@@ -48,6 +48,7 @@
 "propertyDetail.energyEmission" = "Emissions";
 "propertyDetail.community" = "Community cost";
 "propertyDetail.monthCost" = "€/month";
+"propertyDetail.location" = "Location";
 
 "date.today" = "Today";
 "date.yesterday" = "Yesterday";

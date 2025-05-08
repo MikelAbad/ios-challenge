@@ -84,6 +84,14 @@ class PropertyCellViewModel: ObservableObject {
         "\(Int(property.size)) m²"
     }
     
+    var latitude: Double {
+        property.latitude
+    }
+    
+    var longitude: Double {
+        property.longitude
+    }
+    
     var shortDescription: String {
         let type = PropertyType(from: property.propertyType)
         switch type {

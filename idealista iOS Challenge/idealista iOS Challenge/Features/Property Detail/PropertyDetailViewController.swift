@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class PropertyDetailViewController: UIViewController {
     private let viewModel: PropertyDetailViewModel
@@ -45,6 +46,11 @@ class PropertyDetailViewController: UIViewController {
     private let energyCertificationContainer = UIView()
     private let energyCertificationTitleLabel = UILabel()
     private let energyCertificationStackView = UIStackView()
+    
+    private let mapContainer = UIView()
+    private let mapTitleLabel = UILabel()
+    private let mapView = MKMapView()
+    private let locationAnnotation = MKPointAnnotation()
     
     private lazy var imagesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -95,6 +101,7 @@ private extension PropertyDetailViewController {
         setupBasicFeaturesSection()
         setupBuildingFeaturesSection()
         setupEnergyCertificationSection()
+        setupMapSection()
         setupConstraints()
     }
     
@@ -454,13 +461,29 @@ private extension PropertyDetailViewController {
             descriptionTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             descriptionTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
-            descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: 8),
+            descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: 12),
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
             showMoreButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 4),
-            showMoreButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            showMoreButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24)
+            showMoreButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16)
+        ])
+        
+        NSLayoutConstraint.activate([
+            mapContainer.topAnchor.constraint(equalTo: showMoreButton.bottomAnchor, constant: 24),
+            mapContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            mapContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            mapContainer.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
+            
+            mapTitleLabel.topAnchor.constraint(equalTo: mapContainer.topAnchor),
+            mapTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            mapTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            
+            mapView.topAnchor.constraint(equalTo: mapTitleLabel.bottomAnchor, constant: 12),
+            mapView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            mapView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            mapView.heightAnchor.constraint(equalToConstant: 200),
+            mapView.bottomAnchor.constraint(equalTo: mapContainer.bottomAnchor)
         ])
     }
     
@@ -498,6 +521,8 @@ private extension PropertyDetailViewController {
         descriptionTitleLabel.text = viewModel.descriptionTitle
         descriptionLabel.text = viewModel.shortDescription
         showMoreButton.isHidden = viewModel.fullDescription == viewModel.shortDescription
+        
+        updateMapView()
     }
     
     func updateFeaturesUI() {
@@ -544,6 +569,47 @@ private extension PropertyDetailViewController {
             descriptionLabel.numberOfLines = 3
             showMoreButton.setTitle("propertyDetail.showMore".localized(), for: .normal)
         }
+    }
+    
+}
+
+private extension PropertyDetailViewController {
+    
+    func setupMapSection() {
+        mapContainer.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(mapContainer)
+        
+        mapTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        mapTitleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        mapTitleLabel.textColor = .primaryTextColor
+        mapTitleLabel.text = "propertyDetail.location".localized()
+        mapContainer.addSubview(mapTitleLabel)
+        
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.layer.cornerRadius = 8
+        mapView.clipsToBounds = true
+        mapView.showsUserLocation = false
+        mapContainer.addSubview(mapView)
+    }
+    
+    func updateMapView() {
+        guard let details = viewModel.propertyDetails else { return }
+        
+        let latitude = details.ubication.latitude
+        let longitude = details.ubication.longitude
+        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        locationAnnotation.coordinate = coordinate
+        locationAnnotation.title = viewModel.title
+        locationAnnotation.subtitle = viewModel.subtitle
+        
+        mapView.addAnnotation(locationAnnotation)
+        
+        let regionRadius: CLLocationDistance = 500
+        let region = MKCoordinateRegion(center: coordinate,
+                                        latitudinalMeters: regionRadius,
+                                        longitudinalMeters: regionRadius)
+        mapView.setRegion(region, animated: false)
     }
     
 }

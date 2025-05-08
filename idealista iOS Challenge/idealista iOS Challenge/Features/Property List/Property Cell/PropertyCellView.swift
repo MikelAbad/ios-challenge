@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct PropertyCellView: View {
     @ObservedObject var viewModel: PropertyCellViewModel
@@ -15,6 +16,25 @@ struct PropertyCellView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             TabView(selection: $viewModel.currentImageIndex) {
+                
+                ZStack {
+                    if viewModel.currentImageIndex == -1 {
+                        PropertyMapView(
+                            latitude: viewModel.latitude,
+                            longitude: viewModel.longitude,
+                            title: viewModel.title
+                        )
+                    } else {
+                        Image(systemName: "map.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(.secondaryColor)
+                            .padding(50)
+                            .frame(maxWidth: .infinity, maxHeight: imageHeight)
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: imageHeight)
+                .tag(-1)
                 
                 PropertyImageView(
                     image: viewModel.thumbnail,
@@ -114,6 +134,39 @@ struct PropertyCellView: View {
         .background(Color.cellBackgroundColor)
         .cornerRadius(12)
         .padding(.horizontal, 10)
+    }
+}
+
+struct PropertyMapView: UIViewRepresentable {
+    let latitude: Double
+    let longitude: Double
+    let title: String
+    
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        mapView.isUserInteractionEnabled = false
+        
+        let coordinate = CLLocationCoordinate2D(
+            latitude: latitude,
+            longitude: longitude
+        )
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = title
+        mapView.addAnnotation(annotation)
+        
+        let region = MKCoordinateRegion(
+            center: coordinate,
+            span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        )
+        mapView.setRegion(region, animated: false)
+        
+        return mapView
+    }
+    
+    func updateUIView(_ mapView: MKMapView, context: Context) {
+        // Update map if needed
     }
 }
 
