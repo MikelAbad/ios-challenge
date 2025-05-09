@@ -38,6 +38,10 @@ extension UIColor {
         UIColor(named: "navigationColor") ?? UIColor(red: 46/255, green: 139/255, blue: 87/255, alpha: 1) // #D68910
     }
     
+    static var cellBackgroundColor: UIColor {
+        UIColor(named: "cellBackgroundColor") ?? UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1) // #FFFFFF
+    }
+    
 }
 
 extension Color {

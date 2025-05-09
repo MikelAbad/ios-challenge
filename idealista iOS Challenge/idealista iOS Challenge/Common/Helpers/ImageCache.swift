@@ -24,4 +24,8 @@ class ImageCache {
         cache.setObject(image, forKey: url.absoluteString as NSString)
     }
     
+    func clearCache() {
+        cache.removeAllObjects()
+    }
+    
 }
