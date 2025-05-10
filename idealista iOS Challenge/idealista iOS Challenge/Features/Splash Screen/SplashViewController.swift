@@ -9,6 +9,9 @@ import UIKit
 
 class SplashViewController: UIViewController {
     
+    @IBOutlet private weak var logoImageView: UIImageView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    
     private let viewModel: SplashViewModel
     
     init(viewModel: SplashViewModel) {
@@ -22,10 +25,31 @@ class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupAccessibilityIdentifiers()
+        
+        #if DEBUG
+        if ProcessInfo.isRunningUITests {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                Task {
+                    await self.viewModel.loadData()
+                }
+            }
+            return
+        }
+        #endif
         
         Task {
             await viewModel.loadData()
         }
+    }
+    
+}
+
+private extension SplashViewController {
+    
+    func setupAccessibilityIdentifiers() {
+        logoImageView.accessibilityIdentifier = AccessibilityIdentifiers.SplashScreen.logoImage
+        activityIndicator.accessibilityIdentifier = AccessibilityIdentifiers.SplashScreen.activityIndicator
     }
     
 }

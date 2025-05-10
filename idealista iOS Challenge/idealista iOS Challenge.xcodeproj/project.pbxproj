@@ -30,6 +30,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		9726BC972DCEC31C00FD650D /* Exceptions for "idealista iOS ChallengeUITests" folder in "idealista iOS Challenge" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Helpers/AccessibilityIdentifiers.swift,
+				Helpers/UITestingHelper.swift,
+			);
+			target = 975004132DC133D0002AB998 /* idealista iOS Challenge */;
+		};
 		9750043F2DC133D1002AB998 /* Exceptions for "idealista iOS Challenge" folder in "idealista iOS Challenge" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -55,6 +63,9 @@
 		};
 		9750043A2DC133D1002AB998 /* idealista iOS ChallengeUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9726BC972DCEC31C00FD650D /* Exceptions for "idealista iOS ChallengeUITests" folder in "idealista iOS Challenge" target */,
+			);
 			path = "idealista iOS ChallengeUITests";
 			sourceTree = "<group>";
 		};

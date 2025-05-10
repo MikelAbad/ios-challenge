@@ -30,6 +30,7 @@ class PropertyListViewController: UIViewController {
         setupUI()
         configureTableView()
         setupRefreshControl()
+        setupAccessibilityIdentifiers()
         updateUI()
     }
 }
@@ -73,6 +74,10 @@ private extension PropertyListViewController {
     
     func setupUI() {
         title = "propertyList.title".localized()
+    }
+    
+    func setupAccessibilityIdentifiers() {
+        propertyListTableView.accessibilityIdentifier = AccessibilityIdentifiers.PropertyList.tableView
     }
     
     func updateUI() {

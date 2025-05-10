@@ -63,6 +63,7 @@ struct PropertyCellView: View {
                     Text(viewModel.title)
                         .font(.subheadline)
                         .foregroundColor(.primaryTextColor)
+                        .accessibilityIdentifier(AccessibilityIdentifiers.PropertyList.titleLabel)
                     
                     Spacer()
                     
@@ -80,6 +81,7 @@ struct PropertyCellView: View {
                                 .font(.subheadline)
                                 .foregroundColor(viewModel.isFavorite ? .primaryColor : .secondaryColor)
                         }
+                        .accessibilityIdentifier(AccessibilityIdentifiers.PropertyList.favoriteButton)
                     }
                 }
                 
@@ -87,6 +89,7 @@ struct PropertyCellView: View {
                     Text(viewModel.price)
                         .font(.headline)
                         .foregroundColor(.primaryTextColor)
+                        .accessibilityIdentifier(AccessibilityIdentifiers.PropertyList.priceLabel)
                     Text(viewModel.currencySuffix)
                         .font(.caption)
                         .foregroundColor(.primaryTextColor)
@@ -106,6 +109,7 @@ struct PropertyCellView: View {
                         Text(viewModel.rooms)
                             .font(.caption)
                             .foregroundColor(.secondaryTextColor)
+                            .accessibilityIdentifier(AccessibilityIdentifiers.PropertyList.roomsLabel)
                     }
                     
                     HStack(spacing: 4) {
@@ -115,6 +119,7 @@ struct PropertyCellView: View {
                         Text(viewModel.bathrooms)
                             .font(.caption)
                             .foregroundColor(.secondaryTextColor)
+                            .accessibilityIdentifier(AccessibilityIdentifiers.PropertyList.bathroomsLabel)
                     }
                     
                     HStack(spacing: 4) {
@@ -124,11 +129,13 @@ struct PropertyCellView: View {
                         Text(viewModel.size)
                             .font(.caption)
                             .foregroundColor(.secondaryTextColor)
+                            .accessibilityIdentifier(AccessibilityIdentifiers.PropertyList.sizeLabel)
                     }
                     
                     Text(viewModel.shortDescription)
                         .font(.caption)
                         .foregroundColor(.secondaryTextColor)
+                        .accessibilityIdentifier(AccessibilityIdentifiers.PropertyList.descriptionLabel)
                 }
                 .padding(.vertical, 8)
             }

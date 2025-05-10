@@ -109,6 +109,7 @@ private extension PropertyDetailViewController {
         setupEnergyCertificationSection()
         setupMapSection()
         setupConstraints()
+        setupAccessibilityIdentifiers()
     }
     
     func setupContentViews() {
@@ -491,6 +492,33 @@ private extension PropertyDetailViewController {
             mapView.heightAnchor.constraint(equalToConstant: mapHeight),
             mapView.bottomAnchor.constraint(equalTo: mapContainer.bottomAnchor)
         ])
+    }
+    
+    func setupAccessibilityIdentifiers() {
+        view.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.mainView
+        
+        imagesCollectionView.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.imagesCollection
+        pageIndicatorLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.pageIndicator
+        
+        titleLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.titleLabel
+        subtitleLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.subtitleLabel
+        priceValueLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.priceLabel
+        favoriteImageView.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.favoriteIcon
+        
+        roomsLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.roomsLabel
+        bathroomsLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.bathroomsLabel
+        sizeLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.sizeLabel
+        shortDescriptionLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.shortDescriptionLabel
+        
+        descriptionLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.descriptionLabel
+        showMoreButton.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.showMoreButton
+        
+        basicFeaturesTitleLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.basicFeaturesTitle
+        buildingFeaturesTitleLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.buildingFeaturesTitle
+        energyCertificationTitleLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.energyCertificationTitle
+        
+        mapTitleLabel.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.mapTitle
+        mapView.accessibilityIdentifier = AccessibilityIdentifiers.PropertyDetail.mapView
     }
     
     func loadData() {
