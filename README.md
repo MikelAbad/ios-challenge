@@ -26,31 +26,87 @@ Build a small app that allows users to browse through a list of ads and view ad 
 &nbsp;
 
 ### ✅ Minimum Requirements
-- The app must run on **Xcode 16.0** and be compatible with **iOS 16** through **iOS 18**.
-- The app should include at least **two screens**:
-  - A **listing screen** displaying a collection of ads.
-  - A **detail screen** for viewing individual ad information.
-- The code must be written in **Swift** and use the **UIKit** framework.
-- Implement functionality to allow users to **favorite ads**.
-  - If an ad is favorited, display the **date** it was favorited.
-- Use the provided **API endpoints** to fetch and display ad data.
-- Only use **third-party libraries** if absolutely necessary. We value clean and lightweight implementations.
+- ✅ ~~The app must run on **Xcode 16.0** and be compatible with **iOS 16** through **iOS 18**.~~
+- ✅ ~~The app should include at least **two screens**:~~
+  - ~~A **listing screen** displaying a collection of ads.~~
+  - ~~A **detail screen** for viewing individual ad information.~~
+- ✅ ~~The code must be written in **Swift** and use the **UIKit** framework.~~
+- ✅ ~~Implement functionality to allow users to **favorite ads**.~~
+  - ~~If an ad is favorited, display the **date** it was favorited.~~
+- ✅ ~~Use the provided **API endpoints** to fetch and display ad data.~~
+- ✅ ~~Only use **third-party libraries** if absolutely necessary. We value clean and lightweight implementations.~~
 
 &nbsp;
 
 ### 🎁 Optional Bonus Tasks (For extra kudos!)
-1. Implement **pull-to-refresh** functionality on the listing screen.
-2. **Localize** the app into at least one additional language.
-3. Add **tests** for key components of the app.
-4. Add support for **Dark Mode** to ensure the app looks great in all environments.
-5. Incorporate some **SwiftUI** code alongside UIKit.
-6. Implement **persistent storage** using Core Data, SwiftData, Realm, or any other suitable solution.
-7. Add **iPad support** with a responsive layout.
-8. Show the location of the ad using a **map** view, indicating its position.
-9. Feel free to go beyond the requirements and **improve the app** in any way you think is best — we love creativity!
+1. ✅ ~~Implement **pull-to-refresh** functionality on the listing screen.~~
+2. ✅ ~~**Localize** the app into at least one additional language.~~
+3. ✅ ~~Add **tests** for key components of the app.~~
+4. ✅ ~~Add support for **Dark Mode** to ensure the app looks great in all environments.~~
+5. ✅ ~~Incorporate some **SwiftUI** code alongside UIKit.~~
+6. ✅ ~~Implement **persistent storage** using Core Data, SwiftData, Realm, or any other suitable solution.~~
+7. ⚠️ Add **iPad support** with a responsive layout. *(Partially implemented - adapted but not iPad-exclusive)*
+8. ✅ ~~Show the location of the ad using a **map** view, indicating its position.~~
+9. ✅ ~~Feel free to go beyond the requirements and **improve the app** in any way you think is best — we love creativity!~~
 
 &nbsp;
 
 ### 🎉 Once You’ve Finished
 1. Email us at [tlfernandez@idealista.com](mailto:tlfernandez@idealista.com) with your repository link you'd like our iOS team to review, or send the project folder (including the `.git` directory).
 2. Celebrate with a beer after a well done job! 🍺
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### 🛠️ Implementation Details
+
+I've completed the iOS challenge with a focus on clean architecture and demonstrating both UIKit and SwiftUI capabilities while maintaining compatibility with iOS 16+.
+
+#### 📲 App Structure
+
+**Splash Screen**
+- Loads property data in the background while providing a smooth user experience
+- Built with Interface Builder (.xib)
+- Includes a fallback mechanism to load a sample JSON if the API or internet connection fails
+- Informs users whether content is from API or local fallback
+
+**Property List View**
+- Created using a .xib file to add the UITableView and then configured in the ViewController
+- Features **pull-to-refresh** functionality for updating the property list
+- Incorporates **SwiftUI table cells** to demonstrate hybrid UIKit/SwiftUI integration (iOS 16+)
+- Implements the **favorites functionality** with toggle and date display
+- Shows a **non-interactive map** at position -1 in the gallery, loaded on-demand for performance
+
+**Property Details View**
+- Built entirely programmatically to showcase different approaches
+- Fetches detail data on view entry with JSON fallback for API or connection failures
+- Features an **interactive map** at the bottom of the view for property location
+
+#### ⚙️ Architecture & Technical Details
+
+- **MVVM pattern** throughout all views for separation of concerns
+- **Coordinator pattern** for clean navigation management
+- Modern **async/await** for asynchronous operations like API calls
+- Centralized **NetworkService** for all API communication
+- **Core Data persistence** for storing user favorites
+- **Repository pattern** for data management abstraction
+- Multiple **extensions and helpers** for code reusability
+- Simple **image caching** system for detail view images
+
+#### ✨ User Experience Enhancements
+
+- **Localization** support for English and Spanish (easily expandable to more languages)
+- Full **Dark Mode** support
+- Custom colors that meet **accessibility requirements** and provide app coherence
+- Support for **Dynamic Type** font sizing from Accessibility settings
+- **MapKit integration** for maps without external dependencies
+- Using UIViewRepresentable for SwiftUI compatibility (iOS 16 target)
+- **iPad compatibility** with responsive layouts (not a dedicated iPad version)
+
+#### 🧪 Testing
+
+- Added multiple **Unit tests** following the Given-When-Then pattern
+- Added **UI tests** covering main functionality flows
