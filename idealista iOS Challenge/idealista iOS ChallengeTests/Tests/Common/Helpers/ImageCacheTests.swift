@@ -23,7 +23,7 @@ final class ImageCacheTests: XCTestCase {
     
     func testSaveAndRetrieveImage() throws {
         let url = URL(string: "https://domain.com/image.png")!
-        let image = createTestImage(color: .red, size: CGSize(width: 100, height: 100))
+        let image = TestDataFactory.createTestImage(color: .red, size: CGSize(width: 100, height: 100))
         
         sut.saveImage(image, for: url)
         
@@ -44,8 +44,8 @@ final class ImageCacheTests: XCTestCase {
     
     func testOverwriteImage() throws {
         let url = URL(string: "https://example.com/replace.jpg")!
-        let redImage = createTestImage(color: .red, size: CGSize(width: 50, height: 50))
-        let blueImage = createTestImage(color: .blue, size: CGSize(width: 100, height: 100))
+        let redImage = TestDataFactory.createTestImage(color: .red, size: CGSize(width: 50, height: 50))
+        let blueImage = TestDataFactory.createTestImage(color: .blue, size: CGSize(width: 100, height: 100))
         
         sut.saveImage(redImage, for: url)
         sut.saveImage(blueImage, for: url)
@@ -56,14 +56,4 @@ final class ImageCacheTests: XCTestCase {
         XCTAssertEqual(retrievedImage?.size.height, blueImage.size.height, "It should have second image height")
     }
     
-}
-
-private extension ImageCacheTests {
-    func createTestImage(color: UIColor, size: CGSize) -> UIImage {
-        let renderer = UIGraphicsImageRenderer(size: size)
-        return renderer.image { context in
-            color.setFill()
-            context.fill(CGRect(origin: .zero, size: size))
-        }
-    }
 }
