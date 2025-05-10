@@ -146,6 +146,7 @@ private extension PropertyDetailViewController {
         
         pageIndicatorLabel.translatesAutoresizingMaskIntoConstraints = false
         pageIndicatorLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        pageIndicatorLabel.adjustsFontForContentSizeCategory = true
         pageIndicatorLabel.textColor = .primaryTextColor
         pageIndicatorLabel.textAlignment = .center
         pageIndicatorContainer.addSubview(pageIndicatorLabel)
@@ -165,6 +166,7 @@ private extension PropertyDetailViewController {
     func setupTitleLabel() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.textColor = .primaryTextColor
         titleLabel.numberOfLines = 1
         summaryContainerView.addSubview(titleLabel)
@@ -173,6 +175,7 @@ private extension PropertyDetailViewController {
     func setupSubtitleLabel() {
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        subtitleLabel.adjustsFontForContentSizeCategory = true
         subtitleLabel.textColor = .primaryTextColor
         subtitleLabel.numberOfLines = 1
         summaryContainerView.addSubview(subtitleLabel)
@@ -195,11 +198,13 @@ private extension PropertyDetailViewController {
         
         priceValueLabel.translatesAutoresizingMaskIntoConstraints = false
         priceValueLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        priceValueLabel.adjustsFontForContentSizeCategory = true
         priceValueLabel.textColor = .primaryTextColor
         priceContainer.addArrangedSubview(priceValueLabel)
         
         priceSuffixLabel.translatesAutoresizingMaskIntoConstraints = false
         priceSuffixLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        priceSuffixLabel.adjustsFontForContentSizeCategory = true
         priceSuffixLabel.textColor = .primaryTextColor
         priceContainer.addArrangedSubview(priceSuffixLabel)
     }
@@ -231,6 +236,7 @@ private extension PropertyDetailViewController {
         
         roomsLabel.translatesAutoresizingMaskIntoConstraints = false
         roomsLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        roomsLabel.adjustsFontForContentSizeCategory = true
         roomsLabel.textColor = .secondaryTextColor
         roomsContainer.addArrangedSubview(roomsLabel)
     }
@@ -249,6 +255,7 @@ private extension PropertyDetailViewController {
         
         bathroomsLabel.translatesAutoresizingMaskIntoConstraints = false
         bathroomsLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        bathroomsLabel.adjustsFontForContentSizeCategory = true
         bathroomsLabel.textColor = .secondaryTextColor
         bathroomsContainer.addArrangedSubview(bathroomsLabel)
     }
@@ -267,6 +274,7 @@ private extension PropertyDetailViewController {
         
         sizeLabel.translatesAutoresizingMaskIntoConstraints = false
         sizeLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        sizeLabel.adjustsFontForContentSizeCategory = true
         sizeLabel.textColor = .secondaryTextColor
         sizeContainer.addArrangedSubview(sizeLabel)
     }
@@ -274,6 +282,7 @@ private extension PropertyDetailViewController {
     func setupShortPropertyDescriptionLabel() {
         shortDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         shortDescriptionLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        shortDescriptionLabel.adjustsFontForContentSizeCategory = true
         shortDescriptionLabel.textColor = .secondaryTextColor
         shortDescriptionLabel.numberOfLines = 1
         featuresContainer.addArrangedSubview(shortDescriptionLabel)
@@ -282,12 +291,14 @@ private extension PropertyDetailViewController {
     func setupDescriptionLabel() {
         descriptionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionTitleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        descriptionTitleLabel.adjustsFontForContentSizeCategory = true
         descriptionTitleLabel.textColor = .primaryTextColor
         descriptionTitleLabel.numberOfLines = 1
         contentView.addSubview(descriptionTitleLabel)
         
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        descriptionLabel.adjustsFontForContentSizeCategory = true
         descriptionLabel.textColor = .primaryTextColor
         descriptionLabel.numberOfLines = 3
         descriptionLabel.textAlignment = .justified
@@ -297,6 +308,8 @@ private extension PropertyDetailViewController {
     func setupShowMoreButton() {
         showMoreButton.translatesAutoresizingMaskIntoConstraints = false
         showMoreButton.setTitle("propertyDetail.showMore".localized(), for: .normal)
+        showMoreButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .caption1)
+        showMoreButton.titleLabel?.adjustsFontForContentSizeCategory = true
         showMoreButton.addTarget(self, action: #selector(toggleDescription), for: .touchUpInside)
         showMoreButton.tintColor = .accentColor
         contentView.addSubview(showMoreButton)
@@ -308,6 +321,7 @@ private extension PropertyDetailViewController {
         
         basicFeaturesTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         basicFeaturesTitleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        basicFeaturesTitleLabel.adjustsFontForContentSizeCategory = true
         basicFeaturesTitleLabel.textColor = .primaryTextColor
         basicFeaturesTitleLabel.text = "propertyDetail.basicFeatures".localized()
         basicFeaturesContainer.addSubview(basicFeaturesTitleLabel)
@@ -325,6 +339,7 @@ private extension PropertyDetailViewController {
         
         buildingFeaturesTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         buildingFeaturesTitleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        buildingFeaturesTitleLabel.adjustsFontForContentSizeCategory = true
         buildingFeaturesTitleLabel.textColor = .primaryTextColor
         buildingFeaturesTitleLabel.text = "propertyDetail.buildingFeatures".localized()
         buildingFeaturesContainer.addSubview(buildingFeaturesTitleLabel)
@@ -342,6 +357,7 @@ private extension PropertyDetailViewController {
         
         energyCertificationTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         energyCertificationTitleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        energyCertificationTitleLabel.adjustsFontForContentSizeCategory = true
         energyCertificationTitleLabel.textColor = .primaryTextColor
         energyCertificationTitleLabel.text = viewModel.energyCertificateTitle
         energyCertificationContainer.addSubview(energyCertificationTitleLabel)
@@ -615,6 +631,7 @@ private extension PropertyDetailViewController {
         
         mapTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         mapTitleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        mapTitleLabel.adjustsFontForContentSizeCategory = true
         mapTitleLabel.textColor = .primaryTextColor
         mapTitleLabel.text = "propertyDetail.location".localized()
         mapContainer.addSubview(mapTitleLabel)
@@ -691,6 +708,7 @@ private extension PropertyDetailViewController {
         let textLabel = UILabel()
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        textLabel.adjustsFontForContentSizeCategory = true
         textLabel.textColor = .primaryTextColor
         textLabel.text = text
         textLabel.numberOfLines = 1
