@@ -23,6 +23,10 @@
 "propertyList.interior" = "interior";
 "propertyList.hasParkingSpace" = "With parking space";
 "propertyList.parkingSpaceIncluded" = "Parking space included";
+"propertyList.mapTag" = "Property's location in map";
+"propertyList.thumbnailTag" = "Main image of the property";
+"propertyList.imageLoading" = "Loading image";
+"propertyList.imageError" = "Error loading image";
 
 "propertyDetail.showMore" = "See more";
 "propertyDetail.showLess" = "See less";
@@ -49,6 +53,7 @@
 "propertyDetail.community" = "Community cost";
 "propertyDetail.monthCost" = "€/month";
 "propertyDetail.location" = "Location";
+"propertyDetail.imageError" = "Error loading image";
 
 "date.today" = "Today";
 "date.yesterday" = "Yesterday";

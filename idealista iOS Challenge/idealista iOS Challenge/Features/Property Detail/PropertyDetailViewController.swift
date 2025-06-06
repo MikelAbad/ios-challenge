@@ -676,7 +676,9 @@ extension PropertyDetailViewController: UICollectionViewDataSource, UICollection
         }
         
         let imageURL = viewModel.imageURL(at: indexPath.item)
-        cell.configure(with: imageURL)
+        let accessibilityLabel = viewModel.imageAccessibilityLabel(at: indexPath.item)
+        
+        cell.configure(with: imageURL, accessibilityLabel: accessibilityLabel)
         
         return cell
     }

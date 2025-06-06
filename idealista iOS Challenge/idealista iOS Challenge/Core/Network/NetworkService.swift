@@ -9,7 +9,7 @@ import Foundation
 
 enum APIEndpoint {
     static let propertyList = "https://idealista.github.io/ios-challenge/list.json"
-    static let propertyDetail = "https://idealista.github.io/ios-challenge/detail.json"
+    static let propertyDetail = "https://idealista.github.io/ios-challenge/detail_%@.json"
 }
 
 enum NetworkError: Error {

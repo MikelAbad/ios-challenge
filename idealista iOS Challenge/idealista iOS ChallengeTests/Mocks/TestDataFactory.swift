@@ -85,9 +85,9 @@ class TestDataFactory {
             homeType: "home",
             state: "good",
             multimedia: DetailMultimedia(images: [
-                DetailPropertyImage(url: "https://example.com/detail1.jpg", tag: "main", localizedName: "Main", multimediaId: 1),
-                DetailPropertyImage(url: "https://example.com/detail2.jpg", tag: "kitchen", localizedName: "Kitchen", multimediaId: 2),
-                DetailPropertyImage(url: "https://example.com/detail3.jpg", tag: "bathroom", localizedName: "Bathroom", multimediaId: 3)
+                DetailPropertyImage(url: "https://example.com/detail1.jpg", tag: "main"),
+                DetailPropertyImage(url: "https://example.com/detail2.jpg", tag: "kitchen"),
+                DetailPropertyImage(url: "https://example.com/detail3.jpg", tag: "bathroom")
             ]),
             propertyComment: "Venta.Piso EN EXCLUSIVA. Castellana. Se ofrece en venta vivienda de 133 m² en el exclusivo Barrio de Salamanca, zona Castellana, con 3 dormitorios (uno en suite), 2 baños, amplio salón comedor, cocina independiente con office y lavadero. Cuenta con un amplio patio privado y armarios empotrados en todas las habitaciones. Reformado para optimizar el espacio, ofrece gran potencial para personalizarlo. Ubicado en una de las zonas más exclusivas de Madrid, el Barrio de Salamanca, en la cotizada zona de Castellana, se encuentra este espacioso piso en venta de 133 m² que ofrece una oportunidad única para quienes buscan una vivienda que combine comodidad, ubicación y potencial de actualización.",
             ubication: Ubication(latitude: 40.416775, longitude: -3.703790),

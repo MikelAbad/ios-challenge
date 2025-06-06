@@ -28,6 +28,7 @@ struct PropertyCellView: View {
                             longitude: viewModel.longitude,
                             title: viewModel.title
                         )
+                        .accessibilityLabel(viewModel.mapAccessibilityLabel)
                     } else {
                         Image(systemName: "map.fill")
                             .resizable()
@@ -42,14 +43,16 @@ struct PropertyCellView: View {
                 
                 PropertyImageView(
                     image: viewModel.thumbnail,
-                    imageHeight: imageHeight
+                    imageHeight: imageHeight,
+                    accessibilityLabel: viewModel.thumbnailAccessibilityLabel
                 )
                 .tag(0)
                 
                 ForEach(0..<viewModel.images.count, id: \.self) { index in
                     PropertyImageView(
                         image: viewModel.images[index],
-                        imageHeight: imageHeight
+                        imageHeight: imageHeight,
+                        accessibilityLabel: viewModel.imageAccessibilityLabel(at: index)
                     )
                     .tag(index + 1)
                 }
@@ -184,6 +187,7 @@ struct PropertyMapView: UIViewRepresentable {
 struct PropertyImageView: View {
     let image: String
     let imageHeight: CGFloat
+    let accessibilityLabel: String
     
     var body: some View {
         AsyncImage(url: URL(string: image)) { status in
@@ -192,12 +196,14 @@ struct PropertyImageView: View {
                     ProgressView()
                         .tint(.primaryColor)
                         .frame(maxWidth: .infinity, maxHeight: imageHeight)
+                        .accessibilityLabel("propertyList.imageLoading".localized())
                 case .success(let image):
                     image
                         .resizable()
                         .scaledToFill()
                         .frame(maxWidth: .infinity, maxHeight: imageHeight)
                         .clipped()
+                        .accessibilityLabel(accessibilityLabel)
                 case .failure:
                     Image(systemName: "photo.badge.exclamationmark")
                         .resizable()
@@ -205,6 +211,7 @@ struct PropertyImageView: View {
                         .frame(maxWidth: .infinity, maxHeight: imageHeight)
                         .foregroundColor(.secondaryTextColor)
                         .padding()
+                        .accessibilityLabel("propertyList.imageError".localized())
                 @unknown default:
                     EmptyView()
             }

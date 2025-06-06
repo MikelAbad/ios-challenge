@@ -13,82 +13,36 @@
   "multimedia": {
     "images": [
       {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/58/60/32/1273036727.webp",
-        "tag": "livingRoom",
-        "localizedName": "Salón",
-        "multimediaId": 1273036727
+        "url": "https://img4.idealista.com/blur/480_360_mq/0/id.pro.es.image.master/aa/c2/63/1217034679.webp",
+        "tag": "facade"
       },
       {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/a1/0f/ee/1273036728.webp",
-        "tag": "unknown",
-        "localizedName": "Desconocido",
-        "multimediaId": 1273036728
+        "url": "https://img4.idealista.com/blur/480_360_mq/0/id.pro.es.image.master/fd/b1/c9/1217034626.webp",
+        "tag": "corridor"
       },
       {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/79/6b/e0/1273036729.webp",
-        "tag": "views",
-        "localizedName": "Vistas",
-        "multimediaId": 1273036729
+        "url": "https://img4.idealista.com/blur/480_360_mq/0/id.pro.es.image.master/5a/4f/09/1217034664.webp",
+        "tag": "unknown"
       },
       {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/00/c5/91/1273036730.webp",
-        "tag": "facade",
-        "localizedName": "Fachada",
-        "multimediaId": 1273036730
+        "url": "https://img4.idealista.com/blur/480_360_mq/0/id.pro.es.image.master/cc/af/8b/1217034671.webp",
+        "tag": "facade"
       },
       {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/c8/fe/3e/1273036731.webp",
-        "tag": "livingRoom",
-        "localizedName": "Salón",
-        "multimediaId": 1273036731
+        "url": "https://img4.idealista.com/blur/480_360_mq/0/id.pro.es.image.master/12/82/2a/1217034660.webp",
+        "tag": "details"
       },
       {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/f6/5e/9b/1273036732.webp",
-        "tag": "livingRoom",
-        "localizedName": "Salón",
-        "multimediaId": 1273036732
+        "url": "https://img4.idealista.com/blur/480_360_mq/0/id.pro.es.image.master/10/c3/9a/1217034652.webp",
+        "tag": "bedroom"
       },
       {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/86/b1/b0/1273036733.webp",
-        "tag": "livingRoom",
-        "localizedName": "Salón",
-        "multimediaId": 1273036733
+        "url": "https://img4.idealista.com/blur/480_360_mq/0/id.pro.es.image.master/90/79/85/1217034663.webp",
+        "tag": "bathroom"
       },
       {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/7d/e1/66/1273036734.webp",
-        "tag": "livingRoom",
-        "localizedName": "Salón",
-        "multimediaId": 1273036734
-      },
-      {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/20/f2/79/1273036794.webp",
-        "tag": "communalareas",
-        "localizedName": "Zonas comunes",
-        "multimediaId": 1273036794
-      },
-      {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/a5/dc/82/1273036797.webp",
-        "tag": "communalareas",
-        "localizedName": "Zonas comunes",
-        "multimediaId": 1273036797
-      },
-      {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/f3/d4/df/1273036798.webp",
-        "tag": "communalareas",
-        "localizedName": "Zonas comunes",
-        "multimediaId": 1273036798
-      },
-      {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/6b/39/a4/1273036799.webp",
-        "tag": "communalareas",
-        "localizedName": "Zonas comunes",
-        "multimediaId": 1273036799
-      },
-      {
-        "url": "https://img4.idealista.com/blur/WEB_DETAIL-L-L/0/id.pro.es.image.master/81/72/2d/1273036800.webp",
-        "tag": "communalareas",
-        "localizedName": "Zonas comunes",
-        "multimediaId": 1273036800
+        "url": "https://img4.idealista.com/blur/480_360_mq/0/id.pro.es.image.master/68/1c/59/1217034665.webp",
+        "tag": "bedroom"
       }
     ]
   },

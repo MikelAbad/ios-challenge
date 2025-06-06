@@ -23,6 +23,10 @@
 "propertyList.interior" = "interior";
 "propertyList.hasParkingSpace" = "Con garaje";
 "propertyList.parkingSpaceIncluded" = "Garaje incluido";
+"propertyList.mapTag" = "Mapa de la ubicación de la propiedad";
+"propertyList.thumbnailTag" = "Imagen principal de la propiedad";
+"propertyList.imageLoading" = "Cargando imagen";
+"propertyList.imageError" = "Error cargando imagen";
 
 "propertyDetail.showMore" = "Ver más";
 "propertyDetail.showLess" = "Ver menos";
@@ -49,6 +53,7 @@
 "propertyDetail.community" = "Costes de comunidad";
 "propertyDetail.monthCost" = "€/mes";
 "propertyDetail.location" = "Ubicación";
+"propertyDetail.imageError" = "Error cargando imagen";
 
 "date.today" = "Hoy";
 "date.yesterday" = "Ayer";

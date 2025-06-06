@@ -210,4 +210,9 @@ class PropertyDetailViewModel {
         guard index < images.count else { return nil }
         return URL(string: images[index].url)
     }
+    
+    func imageAccessibilityLabel(at index: Int) -> String? {
+        guard index < images.count else { return nil }
+        return images[index].tag
+    }
 }

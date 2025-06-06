@@ -21,11 +21,14 @@ class PropertyImageCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with imageURL: URL?) {
+    func configure(with imageURL: URL?, accessibilityLabel: String?) {
         imageView.image = UIImage(systemName: "photo")
+        imageView.accessibilityLabel = accessibilityLabel
         
         guard let imageURL else {
             imageView.image = UIImage(systemName: "photo.badge.exclamationmark")
+            imageView.tintColor = .secondaryTextColor
+            imageView.accessibilityLabel = "propertyDetail.imageError".localized()
             return
         }
         
@@ -49,6 +52,8 @@ class PropertyImageCell: UICollectionViewCell {
                 await MainActor.run { [weak self] in
                     guard let self else { return }
                     imageView.image = UIImage(systemName: "photo.badge.exclamationmark")
+                    imageView.tintColor = .secondaryTextColor
+                    imageView.accessibilityLabel = "propertyDetail.imageError".localized()
                 }
             }
         }

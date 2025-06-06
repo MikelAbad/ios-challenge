@@ -36,8 +36,6 @@ struct DetailMultimedia: Decodable {
 struct DetailPropertyImage: Decodable {
     let url: String
     let tag: String
-    let localizedName: String
-    let multimediaId: Int
 }
 
 struct Ubication: Decodable {

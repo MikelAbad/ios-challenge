@@ -1,4 +1,7 @@
 # idealista iOS Challenge
+
+> **🆕 UPDATED!** This fork has been recently updated to support the new **dynamic property details API**. The app now fetches specific property details using the property ID (`detail_[id].json`) instead of always receiving the same static response. Additional API fields and data structure improvements have also been implemented to match the updated specifications. **Offline fallback functionality** has also been enhanced to work seamlessly with the new API structure, and **accessibility tags** have been added to images for improved accessibility support.
+
 The idealista iOS team is on the lookout for a new teammate! We’re on a mission to find someone who’s ready to dive into the exciting (and sometimes wild) world of iOS development. From building cool new features to squashing bugs, crafting pixel-perfect UIs, and making sure everything runs smoothly and securely — we’ve got plenty to keep you on your toes.
 
 Think you’re up for the challenge? We could really use your skills to create the next generation of awesome features that will take our app to new heights. Whether it’s making sure our users have a seamless experience or pushing the limits of performance, we need someone who’s ready to jump in and make a real impact.

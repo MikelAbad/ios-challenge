@@ -32,9 +32,7 @@ final class PropertyDetailsModelTests: XCTestCase {
             "images": [
               {
                 "url": "https://example.com/image1.webp",
-                "tag": "livingRoom",
-                "localizedName": "Salón",
-                "multimediaId": 12345
+                "tag": "livingRoom"
               }
             ]
           },
@@ -88,8 +86,6 @@ final class PropertyDetailsModelTests: XCTestCase {
         XCTAssertEqual(propertyDetails.multimedia.images.count, 1, "Should have one image")
         XCTAssertEqual(propertyDetails.multimedia.images.first?.url, "https://example.com/image1.webp", "url should match the JSON value")
         XCTAssertEqual(propertyDetails.multimedia.images.first?.tag, "livingRoom", "tag should match the JSON value")
-        XCTAssertEqual(propertyDetails.multimedia.images.first?.localizedName, "Salón", "localizedName name should match the JSON value")
-        XCTAssertEqual(propertyDetails.multimedia.images.first?.multimediaId, 12345, "multimediaId should match the JSON value")
         
         XCTAssertEqual(propertyDetails.propertyComment, "Property description", "propertyComment should match the JSON value")
         

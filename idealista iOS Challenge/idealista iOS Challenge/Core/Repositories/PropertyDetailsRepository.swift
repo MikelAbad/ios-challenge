@@ -15,12 +15,12 @@ class PropertyDetailsRepository {
         self.networkService = networkService
     }
     
-    // On a real API we would send propertyCode to get matching data
     func fetchPropertyDetails(propertyCode: String) async throws -> PropertyDetails {
         do {
             NetworkLogger.log(message: "Fetching property details from the API...")
             
-            let details: PropertyDetails = try await networkService.fetchData(from: APIEndpoint.propertyDetail)
+            let detailsURL = String(format: APIEndpoint.propertyDetail, propertyCode)
+            let details: PropertyDetails = try await networkService.fetchData(from: detailsURL)
             
             NetworkLogger.log(message: "Successfully loaded property details!", type: .success)
             
@@ -29,15 +29,15 @@ class PropertyDetailsRepository {
             NetworkLogger.log(message: "Network fetch failed", type: .error)
             NetworkLogger.log(message: "Falling back to offline testing data")
             
-            return try await loadLocalPropertyDetails()
+            return try await loadLocalPropertyDetails(propertyCode: propertyCode)
         }
     }
 }
 
 private extension PropertyDetailsRepository {
     
-    func loadLocalPropertyDetails() async throws -> PropertyDetails {
-        guard let url = Bundle.main.url(forResource: "detail", withExtension: "json") else {
+    func loadLocalPropertyDetails(propertyCode: String) async throws -> PropertyDetails {
+        guard let url = Bundle.main.url(forResource: "detail_\(propertyCode)", withExtension: "json") else {
             throw NSError(domain: "PropertyDetailsRepository",
                           code: 1,
                           userInfo: [NSLocalizedDescriptionKey: "JSON not found"])

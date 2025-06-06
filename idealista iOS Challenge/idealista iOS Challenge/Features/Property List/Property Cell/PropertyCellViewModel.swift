@@ -118,6 +118,14 @@ class PropertyCellViewModel: ObservableObject {
         return date.relativeFormat()
     }
     
+    var mapAccessibilityLabel: String {
+        "propertyList.mapTag".localized()
+    }
+    
+    var thumbnailAccessibilityLabel: String {
+        "propertyList.thumbnailTag".localized()
+    }
+    
     init(property: Property, onFavoriteToggle: @escaping () -> Void) {
         self.property = property
         self.onFavoriteToggle = onFavoriteToggle
@@ -125,5 +133,10 @@ class PropertyCellViewModel: ObservableObject {
     
     func toggleFavorite() {
         onFavoriteToggle()
+    }
+    
+    func imageAccessibilityLabel(at index: Int) -> String {
+        guard index < property.multimedia.images.count else { return "" }
+        return property.multimedia.images[index].tag
     }
 }
